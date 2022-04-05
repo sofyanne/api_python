@@ -1,10 +1,11 @@
 import mysql.connector
 
 db = mysql.connector.connect(
-    host='localhost',
-    database='pizzapidb',
+    host='127.0.0.1',
+    port = '8889',
+    database='pythondb',
     user='root',
-    password='')
+    password='root')
 
 cursor = db.cursor(dictionary=True)
 
