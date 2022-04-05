@@ -10,7 +10,7 @@ def index():
 
 
 def show():
-    pass
+    return ingredient_repository.get_all_ingredients()
 
 
 def new():
