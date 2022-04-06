@@ -1,25 +1,21 @@
 import src.repository.ingredient as ingredient_repository
-import json
-
+import json 
 
 def index():
     # Récuperer toutes les recette en BDD
-    ingredients = ingredient_repository.get_all_ingredients()
+    ingredients = ingredient_repository.get_all()
     # Afficher les recettes à l'utilisateur
-    print(json.dumps(ingredients))
+    print(ingredients)
+    #print(json.dumps(ingredients))
 
-
-def show():
-    return ingredient_repository.get_all_ingredients()
-
+def show(id: int):
+    print(ingredient_repository.get(id))
 
 def new():
     pass
 
-
 def edit():
     pass
-
 
 def delete():
     pass

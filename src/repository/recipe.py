@@ -1,25 +1,24 @@
 import mysql.connector
 
 db = mysql.connector.connect(
-    host='127.0.0.1',
-    port = '8889',
-    database='pythondb',
+    host='localhost',
+    database='pizzapidb',
     user='root',
-    password='root')
+    password='')
 
 cursor = db.cursor(dictionary=True)
 
-def get_all_recipes() -> list :
+def get_all() -> list :
     query = "SELECT * FROM recipe"
     cursor.execute(query)
     return cursor.fetchall()
 
-def get_recipe(id: int) -> dict:
+def get(id: int) -> dict:
     query = "SELECT * FROM recipe WHERE id = %s"
     cursor.execute(query,(id,))
     return cursor.fetchone()
 
-def create_new_recipe(data: dict) -> int:
+def insert(data: dict) -> int:
     query = "INSERT INTO recipe (title) VALUES (%(title)s)"
     cursor.execute(query, data)
     db.commit()

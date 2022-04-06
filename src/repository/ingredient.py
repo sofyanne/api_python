@@ -1,35 +1,32 @@
 import mysql.connector
 
 db = mysql.connector.connect(
-    host='127.0.0.1',
-    port='8889',
-    database='pythondb',
+    host='localhost',
+    database='pizzapidb',
     user='root',
-    password='root')
+    password=''
+)
 
 cursor = db.cursor(dictionary=True)
 
-
-def get_all_ingredients() -> list:
+def get_all() -> list :
     query = "SELECT * FROM ingredient"
     cursor.execute(query)
     return cursor.fetchall()
 
-
-def get_ingredient(id: int) -> dict:
+def get(id: int) -> dict:
     query = "SELECT * FROM ingredient WHERE id = %s"
-    cursor.execute(query, (id,))
+    cursor.execute(query,(id,))
     return cursor.fetchone()
 
-
-def create_new_ingredient(data: dict) -> int:
-    query = "INSERT INTO ingredient (labem) VALUES (%(labem)s)"
+def insert(data: dict) -> int:
+    query = "INSERT INTO ingredient (label) VALUES (%(label)s)"
     cursor.execute(query, data)
     db.commit()
     return cursor.lastrowid
 
-
-def update_ingredient(data: dict):
-    query = "UPDATE ingredient SET labem = %(labem)s WHERE id = %(id)s"
+def update(data: dict):
+    query = "UPDATE ingredient SET label = %(label)s WHERE id = %(id)s"
     cursor.execute(query, data)
     db.commit()
+

@@ -22,31 +22,37 @@ def load_recipes():
             'title': 'Pizza Reine'
         },
     ]
-    
+
     for recipe in recipes:
-        recipe_repository.create_new_recipe(recipe)
+        recipe_repository.insert(recipe)
 
 def load_ingredients():
     ingredients = [
         {
-            'labem': 'Cheddar'
+            'label': 'Tomate'
         },
         {
-            'labem': 'Emmental'
+            'label': 'Mozarella'
         },
         {
-            'labem': 'Poulet'
+            'label': 'Olive noire'
         },
         {
-            'labem': 'Viande hachée'
+            'label': 'Crème'
         },
         {
-            'labem': 'Tomate'
+            'label': 'Emmental râpé'
         },
         {
-            'labem': 'Champignons'
+            'label': 'Comté'
+        },
+        {
+            'label': 'Blanc de poulet'
+        },
+        {
+            'label': 'Lardons'
         },
     ]
-    
-    for ingredient in ingredients:
-        ingredient_repository.create_new_ingredient(ingredient)
+
+    for ing in ingredients:
+        ingredient_repository.insert(ing)
